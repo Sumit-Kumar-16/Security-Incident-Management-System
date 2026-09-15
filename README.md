@@ -106,7 +106,6 @@ security_incident_system/
 ├── auth.py
 ├── database.py
 ├── requirements.txt
-├── test.py
 │
 ├── static/
 │   └── style.css
