@@ -1,0 +1,326 @@
+{% extends "base.html" %}
+
+{% block title %}
+Security Incidents
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+
+<div>
+
+    <h1>Security Incidents</h1>
+
+    <p>
+        Monitor, search and investigate reported security incidents.
+    </p>
+
+</div>
+
+
+{% if role == "admin" or role == "analyst" %}
+
+    <a
+        href="{{ url_for('create_incident') }}"
+        class="btn btn-primary">
+
+        + Create Incident
+
+    </a>
+
+{% endif %}
+
+
+</div>
+
+<!-- FILTERS -->
+
+<div class="filter-card">
+
+
+<h3>
+    Search & Filter
+</h3>
+
+
+<form method="GET"
+      action="{{ url_for('incidents') }}">
+
+    <div class="filter-row">
+
+
+        <div class="filter-group">
+
+            <label>
+                Search
+            </label>
+
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Title, description or IP"
+                value="{{ search }}"
+            >
+
+        </div>
+
+
+        <div class="filter-group">
+
+            <label>
+                Severity
+            </label>
+
+            <select
+                name="severity"
+                class="form-control">
+
+                <option value="">
+                    All Severities
+                </option>
+
+                <option value="Low"
+                    {% if severity == "Low" %}selected{% endif %}>
+                    Low
+                </option>
+
+                <option value="Medium"
+                    {% if severity == "Medium" %}selected{% endif %}>
+                    Medium
+                </option>
+
+                <option value="High"
+                    {% if severity == "High" %}selected{% endif %}>
+                    High
+                </option>
+
+                <option value="Critical"
+                    {% if severity == "Critical" %}selected{% endif %}>
+                    Critical
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter-group">
+
+            <label>
+                Status
+            </label>
+
+            <select
+                name="status"
+                class="form-control">
+
+                <option value="">
+                    All Statuses
+                </option>
+
+                <option value="Open"
+                    {% if status == "Open" %}selected{% endif %}>
+                    Open
+                </option>
+
+                <option value="Investigating"
+                    {% if status == "Investigating" %}selected{% endif %}>
+                    Investigating
+                </option>
+
+                <option value="Resolved"
+                    {% if status == "Resolved" %}selected{% endif %}>
+                    Resolved
+                </option>
+
+                <option value="Closed"
+                    {% if status == "Closed" %}selected{% endif %}>
+                    Closed
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div>
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                Search
+
+            </button>
+
+        </div>
+
+
+        <div>
+
+            <a
+                href="{{ url_for('incidents') }}"
+                class="btn btn-secondary">
+
+                Clear
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</form>
+
+
+</div>
+
+<!-- INCIDENT TABLE -->
+
+<div class="table-card">
+
+
+{% if incidents %}
+
+<table class="data-table">
+
+    <thead>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>Incident</th>
+
+            <th>Severity</th>
+
+            <th>Status</th>
+
+            <th>Source IP</th>
+
+            <th>Assigned Analyst</th>
+
+            <th>Action</th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+
+    {% for incident in incidents %}
+
+        <tr>
+
+            <td>
+                #{{ incident.id }}
+            </td>
+
+
+            <td>
+
+                <strong>
+                    {{ incident.title }}
+                </strong>
+
+                <br>
+
+                <small>
+                    {{ incident.created_at }}
+                </small>
+
+            </td>
+
+
+            <td>
+
+                <span
+                    class="badge severity-{{ incident.severity|lower }}">
+
+                    {{ incident.severity }}
+
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <span
+                    class="badge status-{{ incident.status|lower }}">
+
+                    {{ incident.status }}
+
+                </span>
+
+            </td>
+
+
+            <td>
+                {{ incident.source_ip or "N/A" }}
+            </td>
+
+
+            <td>
+
+                {% if incident.assigned_name %}
+
+                    {{ incident.assigned_name }}
+
+                {% else %}
+
+                    <span style="color:#64748b;">
+                        Not Assigned
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+
+            <td>
+
+                <a
+                    href="{{ url_for('incident_details', id=incident.id) }}"
+                    class="btn btn-secondary btn-small">
+
+                    View
+
+                </a>
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+
+{% else %}
+
+    <div class="empty-state">
+
+        <h3>
+            No Incidents Found
+        </h3>
+
+        <p>
+            There are no incidents matching your current filters.
+        </p>
+
+    </div>
+
+{% endif %}
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Panel
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+
+<div>
+
+    <h1>
+        Administration
+    </h1>
+
+    <p>
+        Manage users, incidents and security audit information.
+    </p>
+
+</div>
+
+
+</div>
+
+<div class="stats-grid">
+
+<div class="stat-card">
+
+    <div class="stat-label">
+        User Management
+    </div>
+
+    <div style="margin-top:15px;">
+
+        <a
+            href="{{ url_for('manage_users') }}"
+            class="btn btn-primary">
+
+            Manage Users
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="stat-card">
+
+    <div class="stat-label">
+        Incident Management
+    </div>
+
+    <div style="margin-top:15px;">
+
+        <a
+            href="{{ url_for('incidents') }}"
+            class="btn btn-primary">
+
+            View Incidents
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="stat-card">
+
+    <div class="stat-label">
+        Audit Monitoring
+    </div>
+
+    <div style="margin-top:15px;">
+
+        <a
+            href="{{ url_for('activity_logs') }}"
+            class="btn btn-primary">
+
+            Activity Logs
+
+        </a>
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+
+<h2 class="card-title">
+    Administrative Functions
+</h2>
+
+
+<p>
+    As an administrator, you have access to privileged
+    security management functions.
+</p>
+
+
+<ul>
+
+    <li>
+        Manage user accounts and roles
+    </li>
+
+    <li>
+        Create and manage security incidents
+    </li>
+
+    <li>
+        Assign incidents to security analysts
+    </li>
+
+    <li>
+        Review investigation activity
+    </li>
+
+    <li>
+        Monitor system audit logs
+    </li>
+
+</ul>
+
+
+</div>
+
+{% endblock %}

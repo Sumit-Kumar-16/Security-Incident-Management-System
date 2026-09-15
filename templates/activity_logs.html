@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}
+Activity Logs
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+
+<div>
+
+    <h1>
+        Security Activity Logs
+    </h1>
+
+    <p>
+        Review administrative and security-related system activity.
+    </p>
+
+</div>
+
+
+</div>
+
+<div class="table-card">
+
+
+{% if logs %}
+
+<table class="data-table">
+
+    <thead>
+
+        <tr>
+
+            <th>ID</th>
+
+            <th>User</th>
+
+            <th>Role</th>
+
+            <th>Action</th>
+
+            <th>Details</th>
+
+            <th>Date & Time</th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+
+    {% for log in logs %}
+
+        <tr>
+
+
+            <td>
+                #{{ log.id }}
+            </td>
+
+
+            <td>
+
+                <strong>
+                    {{ log.full_name }}
+                </strong>
+
+                <br>
+
+                <small>
+                    @{{ log.username }}
+                </small>
+
+            </td>
+
+
+            <td>
+
+                <span class="badge">
+
+                    {{ log.role|capitalize }}
+
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <strong>
+                    {{ log.action }}
+                </strong>
+
+            </td>
+
+
+            <td>
+                {{ log.details }}
+            </td>
+
+
+            <td>
+                {{ log.created_at }}
+            </td>
+
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+
+{% else %}
+
+    <div class="empty-state">
+
+        <h3>
+            No Activity Logs
+        </h3>
+
+        <p>
+            No system activity has been recorded yet.
+        </p>
+
+    </div>
+
+{% endif %}
+
+
+</div>
+
+{% endblock %}

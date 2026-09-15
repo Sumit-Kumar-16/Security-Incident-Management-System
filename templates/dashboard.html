@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}
+Security Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+
+<div>
+
+    <h1>Security Dashboard</h1>
+
+    <p>
+        Monitor and manage security incidents across the system.
+    </p>
+
+</div>
+
+{% if role == "admin" or role == "analyst" %}
+
+    <a href="{{ url_for('create_incident') }}"
+       class="btn btn-primary">
+
+        + Create Incident
+
+    </a>
+
+{% endif %}
+
+
+</div>
+
+<!-- =========================
+     WELCOME CARD
+========================== -->
+
+<div class="card"
+     style="margin-bottom: 25px;">
+
+
+<h2>
+    Welcome, {{ username }}
+</h2>
+
+<p>
+    You are logged in as
+    <strong>{{ role|capitalize }}</strong>.
+</p>
+
+
+</div>
+
+<!-- =========================
+     STATISTICS
+========================== -->
+
+<div class="stats-grid">
+
+
+<!-- Total Incidents -->
+
+<div class="stat-card">
+
+    <div class="stat-label">
+        Total Incidents
+    </div>
+
+    <div class="stat-number">
+        {{ total }}
+    </div>
+
+</div>
+
+
+<!-- Open -->
+
+<div class="stat-card">
+
+    <div class="stat-label">
+        Open
+    </div>
+
+    <div class="stat-number">
+        {{ status_counts["Open"] }}
+    </div>
+
+</div>
+
+
+<!-- Investigating -->
+
+<div class="stat-card">
+
+    <div class="stat-label">
+        Investigating
+    </div>
+
+    <div class="stat-number">
+        {{ status_counts["Investigating"] }}
+    </div>
+
+</div>
+
+
+<!-- Critical -->
+
+<div class="stat-card">
+
+    <div class="stat-label">
+        Critical
+    </div>
+
+    <div class="stat-number">
+        {{ severity_counts["Critical"] }}
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- =========================
+     STATUS OVERVIEW
+========================== -->
+
+<div class="card"
+     style="margin-bottom: 25px;">
+
+
+<h2 class="card-title">
+    Incident Status Overview
+</h2>
+
+
+<div class="stats-grid">
+
+
+    <div class="stat-card">
+
+        <div class="stat-label">
+            Open
+        </div>
+
+        <div class="stat-number">
+            {{ status_counts["Open"] }}
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-label">
+            Investigating
+        </div>
+
+        <div class="stat-number">
+            {{ status_counts["Investigating"] }}
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-label">
+            Resolved
+        </div>
+
+        <div class="stat-number">
+            {{ status_counts["Resolved"] }}
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-label">
+            Closed
+        </div>
+
+        <div class="stat-number">
+            {{ status_counts["Closed"] }}
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+<!-- =========================
+     SEVERITY OVERVIEW
+========================== -->
+
+<div class="card">
+
+
+<h2 class="card-title">
+    Incident Severity Overview
+</h2>
+
+
+<div class="stats-grid">
+
+
+    <div class="stat-card">
+
+        <div class="stat-label">
+            Low
+        </div>
+
+        <div class="stat-number">
+            {{ severity_counts["Low"] }}
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-label">
+            Medium
+        </div>
+
+        <div class="stat-number">
+            {{ severity_counts["Medium"] }}
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-label">
+            High
+        </div>
+
+        <div class="stat-number">
+            {{ severity_counts["High"] }}
+        </div>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-label">
+            Critical
+        </div>
+
+        <div class="stat-number">
+            {{ severity_counts["Critical"] }}
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</div>
+
+{% endblock %}
