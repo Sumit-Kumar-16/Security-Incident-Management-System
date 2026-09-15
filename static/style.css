@@ -1,9 +1,3 @@
-/* =========================================================
-SECURITY INCIDENT MANAGEMENT SYSTEM
-Global Stylesheet
-========================================================= */
-
-/* ---------- Global ---------- */
 
 * {
   box-sizing: border-box;
@@ -28,7 +22,6 @@ textarea {
 font-family: inherit;
 }
 
-/* ---------- Navigation ---------- */
 
 .navbar {
 height: 64px;
@@ -67,14 +60,14 @@ color: #cbd5e1;
 color: white;
 }
 
-/* ---------- Layout ---------- */
+
 
 .app-layout {
 display: flex;
 min-height: calc(100vh - 64px);
 }
 
-/* ---------- Sidebar ---------- */
+
 
 .sidebar {
 width: 240px;
@@ -108,7 +101,7 @@ background: #0369a1;
 color: white;
 }
 
-/* ---------- Main Content ---------- */
+
 
 .main-content {
 flex: 1;
@@ -132,7 +125,7 @@ font-size: 28px;
 color: #64748b;
 }
 
-/* ---------- Cards ---------- */
+
 
 .card {
 background: white;
@@ -147,7 +140,7 @@ margin-top: 0;
 margin-bottom: 18px;
 }
 
-/* ---------- Dashboard Statistics ---------- */
+
 
 .stats-grid {
 display: grid;
@@ -175,7 +168,7 @@ font-weight: bold;
 color: #0f172a;
 }
 
-/* ---------- Buttons ---------- */
+
 
 .btn {
 display: inline-block;
@@ -215,7 +208,8 @@ padding: 7px 11px;
 font-size: 13px;
 }
 
-/* ---------- Forms ---------- */
+
+
 
 .form-card {
 max-width: 700px;
@@ -254,7 +248,7 @@ min-height: 120px;
 resize: vertical;
 }
 
-/* ---------- Search / Filters ---------- */
+
 
 .filter-card {
 background: white;
@@ -283,7 +277,7 @@ font-size: 13px;
 font-weight: 600;
 }
 
-/* ---------- Tables ---------- */
+
 
 .table-card {
 background: white;
@@ -315,7 +309,7 @@ border-bottom: 1px solid #e2e8f0;
 background: #f8fafc;
 }
 
-/* ---------- Severity Badges ---------- */
+
 
 .badge {
 display: inline-block;
@@ -345,7 +339,7 @@ background: #fee2e2;
 color: #991b1b;
 }
 
-/* ---------- Status Badges ---------- */
+
 
 .status-open {
 background: #dbeafe;
@@ -367,7 +361,7 @@ background: #e2e8f0;
 color: #475569;
 }
 
-/* ---------- Incident Details ---------- */
+
 
 .detail-grid {
 display: grid;
@@ -392,7 +386,7 @@ margin-bottom: 6px;
 font-weight: 600;
 }
 
-/* ---------- Notes ---------- */
+
 
 .note {
 background: white;
@@ -412,7 +406,7 @@ color: #64748b;
 font-size: 12px;
 }
 
-/* ---------- Login / Registration ---------- */
+
 
 .auth-page {
 min-height: 100vh;
@@ -481,7 +475,7 @@ font-size: 13px;
 margin-top: 15px;
 }
 
-/* ---------- Empty State ---------- */
+
 
 .empty-state {
 text-align: center;
@@ -493,7 +487,7 @@ color: #64748b;
 color: #334155;
 }
 
-/* ---------- Alert ---------- */
+
 
 .alert {
 padding: 13px 16px;
@@ -511,7 +505,7 @@ background: #fee2e2;
 color: #991b1b;
 }
 
-/* ---------- Responsive Design ---------- */
+
 
 @media (max-width: 900px) {
 
